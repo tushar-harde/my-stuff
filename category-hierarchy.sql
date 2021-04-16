@@ -1,8 +1,8 @@
 WITH RECURSIVE cte AS (
     SELECT 
         c.CategoryID AS categoryID
-            ,c.Name AS name
-            ,c.LongName AS longName
+        ,c.Name AS name
+        ,c.LongName AS longName
         ,ifnull(ch.ParentCategoryID, c.CategoryID) AS ParentCategoryID
         ,ch.CategoryID
         ,CASE WHEN ch.CategoryID IS NULL THEN 1 ELSE 2 END AS CategoryLevelID 
@@ -49,4 +49,3 @@ SELECT
 FROM 
     cte, cte1
 GROUP BY cte.ParentCategoryID
-LIMIT 10 OFFSET 10
