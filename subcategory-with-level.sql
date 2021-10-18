@@ -1,5 +1,4 @@
--- change cte to cteee
-WITH RECURSIVE cteee AS (
+WITH RECURSIVE cte AS (
 	SELECT 
         ch.CategoryID
         , c.Name AS name
