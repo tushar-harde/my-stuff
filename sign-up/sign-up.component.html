@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title> Sign up </ion-title>
+    <ion-buttons slot="start" (click)="close()">
+      <ion-button>
+        <ion-icon name="chevron-back-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form">
+    <ion-item lines="none">
+      <mat-form-field appearance="outline">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" placeholder="First Name" required="true">
+        <mat-error *ngIf="form.controls['firstName'].hasError('required')">
+          First name <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </ion-item>
+
+    <ion-item lines="none">
+      <mat-form-field appearance="outline">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" placeholder="Last Name" required="true">
+        <mat-error *ngIf="form.controls['lastName'].hasError('required')">
+          Last name <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </ion-item>
+
+    <ion-item lines="none">
+      <mat-form-field appearance="outline">
+        <span matPrefix>+91 &nbsp;</span>
+        <mat-label>Mobile</mat-label>
+        <input matInput formControlName="mobile" type="number" placeholder="e.g. 1234567890" required="true" pattern=".{10,10}" (input)="confirmMobileNumber($event)">
+        <mat-error *ngIf="form.controls['mobile'].hasError('pattern')">
+          Mobile number should be <strong>10 digits.</strong>
+        </mat-error>
+        <mat-error *ngIf="form.controls['mobile'].hasError('required')">
+          Mobile number is <strong>required</strong>
+        </mat-error>
+      </mat-form-field>
+    </ion-item>    
+
+    <ion-item lines="none">
+      <mat-form-field appearance="outline">
+        <mat-label>OTP</mat-label>
+        <input matInput formControlName="otp" type="number" placeholder="enter otp" required="true">
+        <mat-error *ngIf="form.controls['otp'].hasError('required')">
+          OTP is <strong>required</strong>
+        </mat-error>
+        <mat-hint align="end" primary>Resend otp.</mat-hint>
+      </mat-form-field>
+    </ion-item>
+
+    <ion-item lines="none">
+      <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" placeholder="Ex. pat@example.com" required="true" email>
+        <mat-error *ngIf="form.controls['email'].hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.controls['email'].hasError('email')">
+          Incorrect <strong>email</strong>
+        </mat-error>
+      </mat-form-field>
+    </ion-item>
+
+    <ion-item lines="none">
+      <mat-form-field appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required="true">
+        <mat-error *ngIf="form.controls['password'].hasError('required')">
+          Password <strong>required</strong>
+        </mat-error>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </mat-form-field>
+    </ion-item>
+
+    <ion-item lines="none">
+      <mat-form-field appearance="outline">
+        <mat-label>Confirm Password</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="confirmPassword" required="true" (input)="matchPassword()">
+        <mat-error *ngIf="form.controls['confirmPassword'].hasError('required') && form.controls['confirmPassword'].invalid">
+          Password does not match!
+        </mat-error>
+      </mat-form-field>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-button expand="full" size="large" [disabled]="!form.valid">
+        Sign Up
+      </ion-button>
+    </ion-item>
+  </form>
+</ion-content>

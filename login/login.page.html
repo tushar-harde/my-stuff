@@ -1,0 +1,65 @@
+<ion-content>
+  <div class="top-curv">
+    <p>Welcome!</p>
+    <div class="sign-in">
+      Sign In
+    </div>
+  </div>
+
+  <div>
+    <form [formGroup]="form">
+      <ion-item lines="none">
+        <mat-form-field appearance="outline">
+          <span matPrefix>+91 &nbsp;</span>
+          <mat-label>Mobile Number</mat-label>
+          <input matInput formControlName="mobile" type="number" placeholder="e.g. 1234567890" required="true"
+            pattern=".{10,10}">
+          <mat-error *ngIf="form.controls['mobile'].hasError('pattern')">
+            Mobile number should be <strong>10 digits.</strong>
+          </mat-error>
+          <mat-error *ngIf="form.controls['mobile'].hasError('required')">
+            Mobile number is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </ion-item>
+
+      <ion-item lines="none">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required="true">
+          <mat-error *ngIf="form.controls['password'].hasError('required')">
+            Password <strong>required</strong>
+          </mat-error>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </mat-form-field>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-button expand="full" size="large">
+          Log In
+        </ion-button>
+      </ion-item>
+
+      <ion-item float-right class="forgot-pass" lines="none">
+        <ion-label primary>Forgot Password?</ion-label>
+      </ion-item>
+    </form>
+  </div>
+
+  <div class="bottom-curv">
+    <div class="sign-up">
+      <div class="social">
+        <button>
+          <ion-icon src="/assets/svg/search.svg"></ion-icon>
+        </button>
+        <button>
+          <ion-icon src="/assets/svg/facebook.svg"></ion-icon>
+        </button>
+      </div>
+      <ion-buttons (click)="signUp()">
+        <ion-button>Don't have account? <ion-label primary>Sign Up</ion-label>
+        </ion-button>
+      </ion-buttons>
+    </div>
+  </div>
+</ion-content>

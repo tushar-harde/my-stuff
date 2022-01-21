@@ -1,0 +1,53 @@
+.top-curv {
+    background: white;
+    height: 30vh;
+    border-bottom-left-radius: 100%;
+    .sign-in {
+        text-align: center;
+        font-size: xx-large;
+        color: #3880ff;
+        font-weight: bold;
+    }
+}
+
+p {
+    padding: 10px;
+    padding-left: 30px;
+    font-size: x-large;
+}
+
+.social {
+    text-align: center;
+    ion-icon {
+        font-size: xx-large;
+    }
+    button {
+        background: transparent;
+        padding: 5%;
+    }
+}
+
+.bottom-curv {
+    position: fixed;
+    background: white;
+    bottom: 0;
+    width: 100%;
+    border-top-right-radius: 100%; 
+}
+
+ion-item {
+    --background: transparent !important;
+}
+
+.sign-up {
+    bottom: 0;
+    padding: 5%;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+ion-button {
+    width: 100%;
+}

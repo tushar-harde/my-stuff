@@ -1,0 +1,16 @@
+// generate color data for each vertex        
+const positionAttribute = geometry.getAttribute( 'position' );
+        
+const colors = [];
+const color = [new Color('red'), new Color('green'), new Color('orange'), new Color('yellow'), new Color('white'), new Color('#BFD1E5')];
+    
+for ( let i = 0; i < positionAttribute.count; i += 6 ) {
+	// define the same color for each face of a triangle            
+	colors.push( color[i / 6].r, color[i / 6].g, color[i / 6].b );
+        colors.push( color[i / 6].r, color[i / 6].g, color[i / 6].b );
+        colors.push( color[i / 6].r, color[i / 6].g, color[i / 6].b );
+        colors.push( color[i / 6].r, color[i / 6].g, color[i / 6].b );
+        colors.push( color[i / 6].r, color[i / 6].g, color[i / 6].b );
+        colors.push( color[i / 6].r, color[i / 6].g, color[i / 6].b );
+}
+geometry.setAttribute('color', new Float32BufferAttribute(colors, 3));
